@@ -47,7 +47,12 @@
     "wurifundamentals": "",
     "wverbal": "",
     "wvocabulary": "",
-    "wweburifundamentals": ""
+    "wweburifundamentals": "",
+    "babel-runtime" : "^6.26.0",
+    "babel-regenerator-runtime" : "^6.5.0",
+    "readline": "",
+    "is-fullwidth-code-point" : "",
+    "strip-ansi" : "",
   },
   "devDependencies": {
     "wTesting": ""
