@@ -9,9 +9,9 @@ if( typeof module !== 'undefined' )
   {
     require( '../../BackWithConfig.ss' );
   }
-  catch
+  catch(err)
   {
-    require( '../../Tools.s' );
+    require( '../../../Tools.s' );
   }
 
   var _ = _global_.wTools;

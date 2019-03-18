@@ -21,7 +21,7 @@ if( typeof module !== 'undefined' )
   {
   }
 
-  require( '../../BackWithConfig.ss' );
+  //require( '../../BackWithConfig.ss' );
   require( './TerminalAbstract.s' );
 
   //
@@ -1032,7 +1032,7 @@ function _historyPrependByCurrent()
 
   self.historyIndex = -1;
 
-  self._historyCanged();
+  self._historyChanged();
 
   return self.history[ 0 ];
 }
@@ -1074,11 +1074,11 @@ function _historyPrev()
 
 //
 
-function _historyCanged()
+function _historyChanged()
 {
   var self = this;
 
-  self.eventGive({ kind : 'historyCange' });
+  self.eventGive({ kind : 'historyChange' });
 
   self._historySave();
 
@@ -1993,7 +1993,7 @@ var Proto =
   _historyNext : _historyNext,
   _historyPrev : _historyPrev,
 
-  _historyCanged : _historyCanged,
+  _historyChanged : _historyChanged,
   _historyEvalPath : _historyEvalPath,
 
   //_historySave : _historySave,

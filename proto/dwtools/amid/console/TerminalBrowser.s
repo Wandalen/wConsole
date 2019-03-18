@@ -82,7 +82,7 @@ function initDom()
       border : 'none',
       padding : 0,
       margin : 0,
-      padding : '0 0.5em',
+      padding : '0.5em',
       outline : 'none',
       'font-family' : 'monospace',
       'font-size' : '1.1em',
