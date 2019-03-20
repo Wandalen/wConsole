@@ -18,18 +18,6 @@ if( typeof module !== 'undefined' )
 
 }
 
-/* variant
-if( typeof module !== 'undefined' )
-{
-
-  let _ = require( '../../Tools.s' );
-
-  _.include( 'wCopyable' );
-  _.include( 'wInstancing' );
-  _.include( 'wEventHandler' );
-  _.include( 'wPathFundamentals' );
-}
-*/
 
 /* start confiruration
 if( typeof module !== 'undefined' )
@@ -47,6 +35,7 @@ if( typeof module !== 'undefined' )
 
 }
 */
+     
 //
 
 var _ = _global_.wTools;
@@ -343,7 +332,7 @@ function _historyPrependByCurrent()
   }
 
   self.historyIndex = -1;
-
+  //self._historyCanged();
   self._historyChanged();
 
   return self.history[ 0 ];
@@ -385,7 +374,8 @@ function _historyPrev()
 }
 
 //
-
+     
+//function _historyCanged()
 function _historyChanged()
 {
   var self = this;
