@@ -379,7 +379,8 @@ function _historyPrev()
 function _historyChanged()
 {
   var self = this;
-
+  
+  //self.eventGive({ kind : 'historyCange' });
   self.eventGive({ kind : 'historyChange' });
 
   self._historySave();
@@ -495,7 +496,8 @@ var Events =
   close : 'close',
   pause : 'pause',
   resume : 'resume',
-
+  
+  //historyCange : 'historyCange',
   historyChange : 'historyChange',
   line : 'line',
 
@@ -546,6 +548,7 @@ var Proto =
   _historyNext : _historyNext,
   _historyPrev : _historyPrev,
 
+  //_historyCanged : _historyCanged,
   _historyChanged : _historyChanged,
   _historyEvalPath : _historyEvalPath,
   _historySave : _historySave,
