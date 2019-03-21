@@ -6,7 +6,8 @@
 
 var $ = jQuery;
 var _ = _global_.wTools;
-var Parent = wTerminalAbstract;
+//var Parent = wTerminalAbstract;
+var Parent = _.wTerminalAbstract;
 var Self = function wTerminalBrowser( o )
 {
   return _.instanceConstructor( Self, this, arguments );
