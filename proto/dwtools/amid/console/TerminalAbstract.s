@@ -2,6 +2,24 @@
 
 'use strict';
 
+//bad worked confiruration
+if( typeof module !== 'undefined' )
+{
+
+ // require( '../../BackWithConfig.ss' );
+  require( '../../../../node_modules/wCopyable/proto/dwtools/abase/l7_mixin/Copyable.s' );
+  require( '../../../../node_modules/winstancing/proto/dwtools/abase/l7_mixin/Instancing.s' );
+  require( '../../../../node_modules/wEventHandler/proto/dwtools/abase/l7_mixin/EventHandler.s' );
+  require( '../../../../node_modules/wpathfundamentals/proto/dwtools/abase/l3/Path.s');
+
+  var _ = _global_.wTools;
+
+  _.include( 'wLogger' );
+
+}
+
+
+/* start confiruration
 if( typeof module !== 'undefined' )
 {
 
@@ -16,7 +34,8 @@ if( typeof module !== 'undefined' )
   _.include( 'wLogger' );
 
 }
-
+*/
+     
 //
 
 var _ = _global_.wTools;
@@ -313,8 +332,8 @@ function _historyPrependByCurrent()
   }
 
   self.historyIndex = -1;
-
-  self._historyCanged();
+  //self._historyCanged();
+  self._historyChanged();
 
   return self.history[ 0 ];
 }
@@ -355,12 +374,14 @@ function _historyPrev()
 }
 
 //
-
-function _historyCanged()
+     
+//function _historyCanged()
+function _historyChanged()
 {
   var self = this;
-
-  self.eventGive({ kind : 'historyCange' });
+  
+  //self.eventGive({ kind : 'historyCange' });
+  self.eventGive({ kind : 'historyChange' });
 
   self._historySave();
 
@@ -475,8 +496,9 @@ var Events =
   close : 'close',
   pause : 'pause',
   resume : 'resume',
-
-  historyCange : 'historyCange',
+  
+  //historyCange : 'historyCange',
+  historyChange : 'historyChange',
   line : 'line',
 
 }
@@ -526,7 +548,8 @@ var Proto =
   _historyNext : _historyNext,
   _historyPrev : _historyPrev,
 
-  _historyCanged : _historyCanged,
+  //_historyCanged : _historyCanged,
+  _historyChanged : _historyChanged,
   _historyEvalPath : _historyEvalPath,
   _historySave : _historySave,
   _historyLoad : _historyLoad,

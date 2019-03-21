@@ -6,7 +6,8 @@
 
 var $ = jQuery;
 var _ = _global_.wTools;
-var Parent = wTerminalAbstract;
+//var Parent = wTerminalAbstract;
+var Parent = _.wTerminalAbstract;
 var Self = function wTerminalBrowser( o )
 {
   return _.instanceConstructor( Self, this, arguments );
@@ -82,7 +83,7 @@ function initDom()
       border : 'none',
       padding : 0,
       margin : 0,
-      padding : '0 0.5em',
+      padding : '0.5em',
       outline : 'none',
       'font-family' : 'monospace',
       'font-size' : '1.1em',
