@@ -43,11 +43,11 @@
     <script src="../../../../../node_modules/wTools/proto/dwtools/abase/l2/ModulesRegistry.s"></script>
     <script src="../../../../../node_modules/wTools/proto/dwtools/abase/l2/NameTools.s"></script>
     <script src="../../../../../node_modules/wTools/proto/dwtools/abase/l2/StringTools.s"></script>
-    <!--
+    
     <script src="../../../../../node_modules/wTools/proto/dwtools/abase/Layer0.s"></script>
     <script src="../../../../../node_modules/wTools/proto/dwtools/abase/Layer1.s"></script>
     <script src="../../../../../node_modules/wTools/proto/dwtools/abase/Layer2.s"></script>
-    -->
+    
     
    <script src="../../../../../node_modules/wCopyable/proto/dwtools/abase/l7_mixin/Copyable.s"></script>
    <script src="../../../../../node_modules/winstancing/proto/dwtools/abase/l7_mixin/Instancing.s"></script>
@@ -58,16 +58,26 @@
    <script src="../../../../../node_modules/wProto/proto/dwtools/abase/l3/ProtoAccessor.s"></script>
    <script src="../../../../../node_modules/wProto/proto/dwtools/abase/l3/ProtoLike.s"></script>
    <script src="../../../../../node_modules/wcloner/proto/dwtools/abase/l5/Cloner.s"></script>
+   
     
-   <!--<script src='../ConsoleService.s' type='text/javascript'></script>
-   <script src='../TerminalAbstract.s' type='text/javascript'></script>-->
-   <script src='../TerminalBrowser.s' type='text/javascript'></script>
+   <script src="../../../../../node_modules/wLogger/proto/dwtools/abase/l9/printer/top/Logger.s"></script>
+   <script src="../../../../../node_modules/wLogger/proto/dwtools/abase/l9/printer/top/LoggerExtra.s"></script>
+   <script src="../../../../../node_modules/wLogger/proto/dwtools/abase/l9/printer/top/ToLayeredHtml.s"></script>
+   <script src="../../../../../node_modules/wLogger/proto/dwtools/abase/l9/printer/top/ToString.s"></script>
+   <script src="../../../../../node_modules/wConsequence/proto/dwtools/abase/l9/consequence/Consequence.s"></script>
+    
+    <script src="../../../../../node_modules/estraverse/estraverse.js"></script>
+    
+   <!--<script src='../ConsoleService.s' type='text/javascript'></script>-->
+   <script src='../TerminalAbstract.s' type='text/javascript'></script>
+   <script src="../TerminalBrowser.s" type='text/javascript'></script>
     <!--<script src='../TerminalShell.ss' type='text/javascript'></script> -->
+    <script src='../../../../Tools.s' type='text/javascript'></script>
 </head>
 
 <body>
    <div id="main">
-      <button id="t1" onclick="new _.TerminalBrowser">1</button>
+      <button id="t1" onclick="new _.TerminalBrowser()">1</button>
    </div>
 </body>
 </html>
