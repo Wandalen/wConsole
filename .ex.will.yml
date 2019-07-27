@@ -21,13 +21,13 @@ execution :
 
 path :
 
-  repository : git+https://github.com/Wandalen/wConsole.git
-  bugs : https://github.com/Wandalen/wConsole/issues
+  repository : git+https:///github.com/Wandalen/wConsole.git
+  bugs : https:///github.com/Wandalen/wConsole/issues
 
 step :
 
   export.proto :
-    inherit : predefined.export
+    inherit : module.export
     export : path::proto
     tar : 0
     criterion :
