@@ -10,7 +10,7 @@ var _ = _global_.wTools;
 var Parent = _.wTerminalAbstract;
 var Self = function wTerminalBrowser( o )
 {
-  return _.instanceConstructor( Self, this, arguments );
+  return _.workpiece.construct( Self, this, arguments );
 }
 
 //
