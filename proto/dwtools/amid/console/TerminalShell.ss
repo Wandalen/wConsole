@@ -75,7 +75,7 @@ var _ = _global_.wTools;
 var Parent = wTerminalAbstract;
 var Self = function wTerminalShell( o )
 {
-  return _.instanceConstructor( Self, this, arguments );
+  return _.workpiece.construct( Self, this, arguments );
 }
 
 //

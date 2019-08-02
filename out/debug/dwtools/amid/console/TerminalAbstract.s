@@ -42,7 +42,7 @@ var _ = _global_.wTools;
 var Parent = Object;
 var Self = function wTerminalAbstract( o )
 {
-  return _.instanceConstructor( Self, this, arguments );
+  return _.workpiece.construct( Self, this, arguments );
 }
 
 Self.shortName = 'TerminalAbstract';

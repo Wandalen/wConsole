@@ -36,7 +36,7 @@ var _ = _global_.wTools;
 var Parent = null;
 var Self = function wGhiVocabulary( o )
 {
-  return _.instanceConstructor( Self, this, arguments );
+  return _.workpiece.construct( Self, this, arguments );
 }
 
 Self.shortName = 'GhiVocabulary';
