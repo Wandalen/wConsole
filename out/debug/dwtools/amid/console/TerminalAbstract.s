@@ -10,7 +10,7 @@ if( typeof module !== 'undefined' )
   require( '../../../../node_modules/wCopyable/proto/dwtools/abase/l7_mixin/Copyable.s' );
   require( '../../../../node_modules/winstancing/proto/dwtools/abase/l7_mixin/Instancing.s' );
   require( '../../../../node_modules/wEventHandler/proto/dwtools/abase/l7_mixin/EventHandler.s' );
-  require( '../../../../node_modules/wpathfundamentals/proto/dwtools/abase/l3/Path.s');
+  require( '../../../../node_modules/wpathbasic/proto/dwtools/abase/l3/Path.s');
 
   var _ = _global_.wTools;
 

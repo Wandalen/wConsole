@@ -19,7 +19,7 @@ if( typeof module !== 'undefined' )
   var _ = _global_.wTools;
 
   _.include( 'wLogger' );
-  _.include( 'wPathFundamentals'/*ttt*/ );
+  _.include( 'wPathBasic'/*ttt*/ );
   _.include( 'wCopyable' );
 
   // require( 'include/dwtools/abase/l7_mixin/Copyable.s' );
