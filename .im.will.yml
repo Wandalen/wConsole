@@ -3,81 +3,81 @@ submodule :
 
   wTools :
     path : npm:///wTools
-    enabled : 0
+    enabled : 0 # submodule
   wCopyable :
     path : npm:///wCopyable
-    enabled : 0
+    enabled : 0 # submodule
   wConsequence :
     path : npm:///wConsequence
-    enabled : 0
+    enabled : 0 # submodule
   wLogger :
     path : npm:///wLogger
-    enabled : 0
+    enabled : 0 # submodule
   wRegexpObject :
     path : npm:///wRegexpObject
-    enabled : 0
-  wappbasic :
+    enabled : 0 # submodule
+  wAppBasic :
     path : npm:///wappbasic
-    enabled : 0
-  wfieldsstack :
+    enabled : 0 # submodule
+  wFieldsStack :
     path : npm:///wfieldsstack
-    enabled : 0
-  wpathbasic :
+    enabled : 0 # submodule
+  wPathBasic :
     path : npm:///wpathbasic
-    enabled : 0
-  wroutinebasic :
+    enabled : 0 # submodule
+  wRoutineBasic :
     path : npm:///wroutinebasic
-    enabled : 0
-  wselector :
+    enabled : 0 # submodule
+  wSelector :
     path : npm:///wselector
-    enabled : 0
-  wstarter :
+    enabled : 0 # submodule
+  wStarter :
     path : npm:///wstarter
-    enabled : 0
-  wstringer :
+    enabled : 0 # submodule
+  wStringer :
     path : npm:///wstringer
-    enabled : 0
-  wstringsextra :
+    enabled : 0 # submodule
+  wStringsExtra :
     path : npm:///wstringsextra
-    enabled : 0
-  wuribasic :
+    enabled : 0 # submodule
+  wUriBasic :
     path : npm:///wuribasic
-    enabled : 0
-  wverbal :
+    enabled : 0 # submodule
+  wVerbal :
     path : npm:///wverbal
-    enabled : 0
-  wvocabulary :
+    enabled : 0 # submodule
+  wVocabulary :
     path : npm:///wvocabulary
-    enabled : 0
-  wweburibasic :
+    enabled : 0 # submodule
+  wWebUriBasic :
     path : npm:///wweburibasic
-    enabled : 0
+    enabled : 0 # submodule
   babel-runtime :
     path : npm:///babel-runtime#^6.26.0
-    enabled : 0
+    enabled : 0 # submodule
   babel-regenerator-runtime :
     path : npm:///babel-regenerator-runtime#^6.5.0
-    enabled : 0
+    enabled : 0 # submodule
   readline :
     path : npm:///readline
-    enabled : 0
+    enabled : 0 # submodule
   is-fullwidth-code-point :
     path : npm:///is-fullwidth-code-point
-    enabled : 0
+    enabled : 0 # submodule
   strip-ansi :
     path : npm:///strip-ansi
-    enabled : 0
-  winstancing :
+    enabled : 0 # submodule
+  wInstancing :
     path : npm:///winstancing
-    enabled : 0
+    enabled : 0 # submodule
   wconsole :
     path : hd://.
-    enabled : 0
+    enabled : 0 # submodule
     criterion :
       development : 1
   wTesting :
     path : npm:///wTesting
-    enabled : 0
+    enabled : 0 # submodule
     criterion :
       development : 1
 
