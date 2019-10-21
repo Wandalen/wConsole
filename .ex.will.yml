@@ -22,7 +22,7 @@ about :
 path :
 
   repository : git+https:///github.com/Wandalen/wConsole.git
-  remotes :
+  origins :
    - git+https:///github.com/Wandalen/wConsole.git
    - npm:///wconsole
   bugs : https:///github.com/Wandalen/wConsole/issues
