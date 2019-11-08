@@ -3,8 +3,8 @@ root:
   - wConsole.out
 consistency:
   wConsole.out.will.yml: &ref_0
-    hash: 6d8c1f9deebdcf1a1bc07d13c2253ebf
-    size: 13264
+    hash: 241c13a069e2b8503084c2f0202a3369
+    size: 13098
   ../.ex.will.yml: &ref_1
     hash: 857b7874c422852dca37f4135b6dfe20
     size: 844
@@ -15,6 +15,7 @@ module:
   wConsole.out:
     about:
       name: wConsole
+      org: noorg
       description: ''
       enabled: 1
       version: 0.0.1
@@ -52,9 +53,6 @@ module:
       download:
         criterion:
           predefined: 1
-      remote:
-        criterion:
-          predefined: 1
       repository:
         path: 'git+https:///github.com/Wandalen/wConsole.git'
       origins:
@@ -64,14 +62,10 @@ module:
       bugs:
         path: 'https:///github.com/Wandalen/wConsole/issues'
       in:
-        criterion:
-          predefined: 0
         path: .
       temp:
         path: .
       out:
-        criterion:
-          predefined: 0
         path: .
       out.debug:
         criterion:
@@ -87,6 +81,7 @@ module:
         path: '{path::proto}/**'
       exported.dir.proto.export:
         criterion:
+          generated: 1
           default: 1
           debug: 1
           raw: 1
@@ -97,6 +92,7 @@ module:
         path: ../proto
       exported.files.proto.export:
         criterion:
+          generated: 1
           default: 1
           debug: 1
           raw: 1
@@ -164,6 +160,7 @@ module:
           prefixPath: ../proto
         mandatory: 1
         criterion:
+          generated: 1
           default: 1
           debug: 1
           raw: 1
@@ -181,6 +178,7 @@ module:
         recursive: 0
         mandatory: 1
         criterion:
+          generated: 1
           default: 1
           debug: 1
           raw: 1
@@ -272,6 +270,7 @@ module:
         opts:
           reflector: 'reflector::exported.proto.export*'
         criterion:
+          generated: 1
           default: 1
           debug: 1
           raw: 1
@@ -285,6 +284,7 @@ module:
         opts:
           reflector: 'reflector::exported.files.proto.export*'
         criterion:
+          generated: 1
           default: 1
           debug: 1
           raw: 1
@@ -365,6 +365,7 @@ module:
   ../:
     about:
       name: wConsole
+      org: noorg
       description: ''
       enabled: 1
       version: 0.0.1
@@ -402,9 +403,6 @@ module:
       download:
         criterion:
           predefined: 1
-      remote:
-        criterion:
-          predefined: 1
       repository:
         path: 'git+https:///github.com/Wandalen/wConsole.git'
       origins:
@@ -414,25 +412,21 @@ module:
       bugs:
         path: 'https:///github.com/Wandalen/wConsole/issues'
       in:
-        criterion:
-          predefined: 0
         path: .
       temp:
         path: out
       out:
-        criterion:
-          predefined: 0
         path: out
       out.debug:
         criterion:
           debug: 1
-        path: ./out/debug
+        path: out/debug
       out.release:
         criterion:
           debug: 0
-        path: ./out/release
+        path: out/release
       proto:
-        path: ./proto
+        path: proto
       export:
         path: '{path::proto}/**'
     submodule: {}
