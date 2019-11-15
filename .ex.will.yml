@@ -24,12 +24,15 @@ path :
 
   repository : git+https:///github.com/Wandalen/wConsole.git
   bugtracker : https:///github.com/Wandalen/wConsole/issues
+  origins :
+   - git+https:///github.com/Wandalen/wConsole.git
+   - npm:///wconsole
 
 step :
 
   proto.export :
     inherit : module.export
-    export : path::proto
+    export : path::export
     tar : 0
     criterion :
       content : 'proto'
