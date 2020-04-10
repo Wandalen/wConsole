@@ -1,6 +1,6 @@
 {
   "name" : "wconsole", 
-  "version" : "0.0.96", 
+  "version" : "0.0.97", 
   "engine" : "node >= 8.0.0", 
   "description" : "", 
   "license" : "MIT", 
