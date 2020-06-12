@@ -2,13 +2,10 @@ format: outwillfile-2.0
 root:
   - wConsole.out
 consistency:
-  wConsole.out.will.yml: &ref_0
-    hash: b5aa942ff7db42f51bf52bd85014657d
-    size: 42076
-  ../.ex.will.yml: &ref_1
-    hash: 08d0978685e4400f9c38dce6354384da
-    size: 1657
-  ../.im.will.yml: &ref_2
+  ../.ex.will.yml: &ref_0
+    hash: 959d4b4e90b3d0c3ff310045c7c453c4
+    size: 1658
+  ../.im.will.yml: &ref_1
     hash: 7ecf372b2c2d918a1db92eea1efc0f56
     size: 6544
 module:
@@ -19,19 +16,19 @@ module:
       description: ''
       enabled: 1
       version: 0.1.0
-      interpreters:
+      interpreters: &ref_2
         - njs >= 10.0.0
         - chrome >= 60.0.0
         - firefox >= 60.0.0
-      keywords:
+      keywords: &ref_3
         - wTools
       license: MIT
       author: Kostiantyn Wandalen <wanalen@01.school>
-      contributors:
+      contributors: &ref_4
         - Kostiantyn Wandalen <wanalen@01.school>
         - Volodymyr M. <volodymyr.migdal@gmail.com>
       npm.name: wconsole
-      npm.scripts:
+      npm.scripts: &ref_5
         test: wtest .run proto/**
     path:
       module.willfiles:
@@ -778,24 +775,6 @@ module:
           content: prime
         inherit:
           - files.transpile
-      exported.proto.export:
-        opts:
-          filePath: 'reflector::exported.proto.export*'
-        criterion:
-          generated: 1
-          content: proto
-          export: 1
-        inherit:
-          - files.reflect
-      exported.files.proto.export:
-        opts:
-          filePath: 'reflector::exported.files.proto.export*'
-        criterion:
-          generated: 1
-          content: proto
-          export: 1
-        inherit:
-          - files.reflect
     build:
       proto.export:
         steps:
@@ -884,9 +863,8 @@ module:
           content: proto
           export: 1
     consistency:
-      wConsole.out.will.yml: *ref_0
-      ../.ex.will.yml: *ref_1
-      ../.im.will.yml: *ref_2
+      ../.ex.will.yml: *ref_0
+      ../.im.will.yml: *ref_1
   ../:
     about:
       name: wConsole
@@ -894,20 +872,13 @@ module:
       description: ''
       enabled: 1
       version: 0.1.0
-      interpreters:
-        - njs >= 10.0.0
-        - chrome >= 60.0.0
-        - firefox >= 60.0.0
-      keywords:
-        - wTools
+      interpreters: *ref_2
+      keywords: *ref_3
       license: MIT
       author: Kostiantyn Wandalen <wanalen@01.school>
-      contributors:
-        - Kostiantyn Wandalen <wanalen@01.school>
-        - Volodymyr M. <volodymyr.migdal@gmail.com>
+      contributors: *ref_4
       npm.name: wconsole
-      npm.scripts:
-        test: wtest .run proto/**
+      npm.scripts: *ref_5
     path:
       module.willfiles:
         criterion:
@@ -1649,11 +1620,8 @@ module:
           - 'build::npm'
     consistency:
       ../.ex.will.yml:
-        hash: 08d0978685e4400f9c38dce6354384da
-        size: 1657
+        hash: 959d4b4e90b3d0c3ff310045c7c453c4
+        size: 1658
       ../.im.will.yml:
         hash: 7ecf372b2c2d918a1db92eea1efc0f56
         size: 6544
-      wConsole.out.will.yml:
-        hash: b5aa942ff7db42f51bf52bd85014657d
-        size: 42076
