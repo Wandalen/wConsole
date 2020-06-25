@@ -5,22 +5,7 @@
 if( typeof module !== 'undefined' )
 {
 
-  if( typeof _global_ === 'undefined' || !Object.hasOwnProperty.call( _global_, 'wBase' ) )
-  {
-    let toolsPath = '../../../dwtools/Base.s';
-    let toolsExternal = 0;
-    try
-    {
-      toolsPath = require.resolve( toolsPath );
-    }
-    catch( err )
-    {
-      toolsExternal = 1;
-      require( 'wTools' );
-    }
-    if( !toolsExternal )
-    require( toolsPath );
-  }
+  require( '../../../dwtools/Tools.s' );
 
   var _ = _global_.wTools;
 
@@ -49,7 +34,7 @@ function init( o )
 
   self[ Symbol.for( 'headEnabled' ) ] = self.Self.prototype.Composes.headEnabled;
 
-  _.instanceInit( self );
+  _.workpiece.initFields( self );
   Object.preventExtensions( self );
 
   if( o )
@@ -336,7 +321,7 @@ function subjectSet( subject )
   if( subjectWas === subject && subject )
   return;
 
-  self.handleSubjectBegin( subject ).got( function()
+  self.handleSubjectBegin( subject ).give( function()
   {
 
     self.subject = subject;
@@ -402,7 +387,7 @@ function handleSubjectBegin( newSubject )
   else if( begin.length === 1 && begin[ 0 ] === false )
   result = new _.Consequence()
   else
-  result = new _.Consequence().give( null );
+  result = new _.Consequence().take( null );
 
   return result;
 }
@@ -432,7 +417,7 @@ function handleSubjectEnd()
   {
     if( subjectResult[ d ] )
     {
-      _.timeOut( 1,self,self.activate,[{ action : self.vocabulary.descriptorArray[ d ] }] );
+      _.time.out( 1,self,self.activate,[{ action : self.vocabulary.descriptorArray[ d ] }] );
       break;
     }
   }
@@ -681,8 +666,8 @@ function handleActivateEnd( e )
     var item = self.phrasesDom.find( '.item' + '[ phrase="' + e.phrase + '" ]' );
     item.removeClass( 'active' );
 
-    /*alert( _.str( 'action','"'+e.phrase+'"','has just done!' ) );*/
-    console.log( _.str( 'action','"'+e.phrase+'"','has just done!' ) );
+    /*alert( _.toStrSimple( 'action','"'+e.phrase+'"','has just done!' ) );*/
+    console.log( _.toStrSimple( 'action','"'+e.phrase+'"','has just done!' ) );
 
   }
 
@@ -720,7 +705,7 @@ function _headEnabledGet( src )
   return self[ Symbol.for( 'headEnabled' ) ];
 /*
   var input = self.headDom.find( 'input' );
-  return !_.str( input.attr( 'disabled' ) );
+  return !_.toStrSimple( input.attr( 'disabled' ) );
 */
 }
 
