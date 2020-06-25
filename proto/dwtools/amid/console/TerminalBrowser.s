@@ -6,8 +6,7 @@
 
 var $ = jQuery;
 var _ = _global_.wTools;
-//var Parent = wTerminalAbstract;
-var Parent = _.wTerminalAbstract;
+var Parent = wTerminalAbstract;
 var Self = function wTerminalBrowser( o )
 {
   return _.workpiece.construct( Self, this, arguments );
@@ -83,7 +82,7 @@ function initDom()
       border : 'none',
       padding : 0,
       margin : 0,
-      padding : '0.5em',
+      padding : '0 0.5em',
       outline : 'none',
       'font-family' : 'monospace',
       'font-size' : '1.1em',
@@ -164,7 +163,7 @@ function hookConsole()
     _.assert( !!original );
     console[ methods[ m ] ] = function()
     {
-      var src = _.str.apply( _,arguments );
+      var src = _.toStrSimple.apply( _,arguments );
       self._writeOutput( src + '\n' );
       return original.apply( this,arguments );
     }
@@ -204,7 +203,7 @@ function _rewriteInput( srcString )
 
   textarea[ 0 ].value = srcString;
 
-  _.domCaretSelect( textarea,[ srcString.length,srcString.length ] );
+  _.dom.caretSelect( textarea,[ srcString.length,srcString.length ] );
 
 }
 
@@ -219,7 +218,7 @@ function _historyEvalPath()
   if( self._historyPath )
   return self._historyPath;
 
-  self._historyPath = self.nickName + '-history';
+  self._historyPath = self.qualifiedName + '-history';
 
   return self._historyPath;
 }

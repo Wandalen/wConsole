@@ -2,24 +2,6 @@
 
 'use strict';
 
-//bad worked confiruration
-if( typeof module !== 'undefined' )
-{
-
- // require( '../../BackWithConfig.ss' );
-  require( '../../../../node_modules/wCopyable/proto/dwtools/abase/l7_mixin/Copyable.s' );
-  require( '../../../../node_modules/winstancing/proto/dwtools/abase/l7_mixin/Instancing.s' );
-  require( '../../../../node_modules/wEventHandler/proto/dwtools/abase/l7_mixin/EventHandler.s' );
-  require( '../../../../node_modules/wpathbasic/proto/dwtools/abase/l3/Path.s');
-
-  var _ = _global_.wTools;
-
-  _.include( 'wLogger' );
-
-}
-
-
-/* start confiruration
 if( typeof module !== 'undefined' )
 {
 
@@ -27,15 +9,14 @@ if( typeof module !== 'undefined' )
   require( 'include/dwtools/abase/l7_mixin/Copyable.s' );
   require( 'include/dwtools/abase/l7_mixin/Instancing.s' );
   require( 'include/dwtools/abase/l7_mixin/EventHandler.s' );
-  require( 'include/dwtools/l3/Path.s' );
+  require( 'include/dwtools/l2/PathBasic.s' );
 
   var _ = _global_.wTools;
 
   _.include( 'wLogger' );
 
 }
-*/
-     
+
 //
 
 var _ = _global_.wTools;
@@ -54,7 +35,7 @@ function init( o )
   var self = this;
   var o = o || {};
 
-  _.instanceInit( self );
+  _.workpiece.initFields( self );
 
   Object.preventExtensions( self );
 
@@ -70,7 +51,7 @@ function init( o )
   self._conQuestion = new _.Consequence();
 
   if( !self._conSyn )
-  self._conSyn = new _.Consequence().give( null );
+  self._conSyn = new _.Consequence().take( null );
 
   /* */
 
@@ -251,7 +232,7 @@ function _lineEnded( line )
   self._historyPrependByCurrent();
 
   if( self._conQuestion.competitorsEarlyGet().length )
-  self._conQuestion.give( line );
+  self._conQuestion.take( line );
 
   var result = self.eventHandleSingle
   ({
@@ -283,7 +264,7 @@ function _lineEntered()
   var result = self._lineEnd();
 
   if( _.consequenceIs( result ) )
-  result.doThen( _.routineSeal( self,self._lineRefresh,[] ) );
+  result.finally( _.routineSeal( self,self._lineRefresh,[] ) );
   else
   self._lineRefresh();
 
@@ -332,8 +313,8 @@ function _historyPrependByCurrent()
   }
 
   self.historyIndex = -1;
-  //self._historyCanged();
-  self._historyChanged();
+
+  self._historyCanged();
 
   return self.history[ 0 ];
 }
@@ -374,14 +355,12 @@ function _historyPrev()
 }
 
 //
-     
-//function _historyCanged()
-function _historyChanged()
+
+function _historyCanged()
 {
   var self = this;
-  
-  //self.eventGive({ kind : 'historyCange' });
-  self.eventGive({ kind : 'historyChange' });
+
+  self.eventGive({ kind : 'historyCange' });
 
   self._historySave();
 
@@ -496,9 +475,8 @@ var Events =
   close : 'close',
   pause : 'pause',
   resume : 'resume',
-  
-  //historyCange : 'historyCange',
-  historyChange : 'historyChange',
+
+  historyCange : 'historyCange',
   line : 'line',
 
 }
@@ -548,8 +526,7 @@ var Proto =
   _historyNext : _historyNext,
   _historyPrev : _historyPrev,
 
-  //_historyCanged : _historyCanged,
-  _historyChanged : _historyChanged,
+  _historyCanged : _historyCanged,
   _historyEvalPath : _historyEvalPath,
   _historySave : _historySave,
   _historyLoad : _historyLoad,
@@ -580,7 +557,7 @@ _.EventHandler.mixin( Self );
 
 //
 
-if( typeof module !== 'undefined' && module !== null )
+if( typeof module !== 'undefined' )
 module[ 'exports' ] = Self;
 _global_[ Self.name ] = _[ Self.shortName ] = Self;
 

@@ -21,14 +21,14 @@ if( typeof module !== 'undefined' )
   {
   }
 
-  //require( '../../BackWithConfig.ss' );
+  require( '../../BackWithConfig.ss' );
   require( './TerminalAbstract.s' );
 
   //
 
   var _ = _global_.wTools;
   var File = null;
-  var Buffer = require( 'buffer' ).Buffer;
+  var BufferNode = require( 'buffer' ).BufferNode;
   var ReadLine = require( 'readline' );
 
   try
@@ -167,7 +167,7 @@ function prompt()
 {
   var self = this;
 
-  _.assert( arguments.length === 0 );
+  _.assert( arguments.length === 0, 'Expects no arguments' );
 
   Parent.prototype.prompt.call( self );
 
@@ -904,7 +904,7 @@ function _writtenTerminal( srcStr, key )
 
       default:
 
-        if( srcStr instanceof Buffer )
+        if( srcStr instanceof BufferNode )
         srcStr = srcStr.toString( 'utf-8' );
 
         if( srcStr )
@@ -917,7 +917,7 @@ function _writtenTerminal( srcStr, key )
           {
 
             self._conSyn
-            .doThen( function()
+            .finally( function()
             {
 
               if( i > 0 )
@@ -935,7 +935,7 @@ function _writtenTerminal( srcStr, key )
           })( i );
 
 /*
-          .doThen( function( i )
+          .finally( function( i )
           {
 
             if( i > 0 )
@@ -1031,9 +1031,8 @@ function _historyPrependByCurrent()
   }
 
   self.historyIndex = -1;
-  
-  //self._historyCanged();
-  self._historyChanged();
+
+  self._historyCanged();
 
   return self.history[ 0 ];
 }
@@ -1074,12 +1073,12 @@ function _historyPrev()
 }
 
 //
-//function _historyCanged()
-function _historyChanged()
+
+function _historyCanged()
 {
   var self = this;
 
-  self.eventGive({ kind : 'historyChange' });
+  self.eventGive({ kind : 'historyCange' });
 
   self._historySave();
 
@@ -1994,8 +1993,7 @@ var Proto =
   _historyNext : _historyNext,
   _historyPrev : _historyPrev,
 
-  //_historyCanged : _historyCanged,
-  _historyChanged : _historyChanged,
+  _historyCanged : _historyCanged,
   _historyEvalPath : _historyEvalPath,
 
   //_historySave : _historySave,

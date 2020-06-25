@@ -5,16 +5,7 @@
 if( typeof module !== 'undefined' )
 {
 
-  try
-  {
-    require( '../../BackWithConfig.ss' );
-  }
-  //catch
-  catch(err)
-  {
-    //require( '../../Tools.s'
-    require( '../../../Tools.s' );
-  }
+  require( '../../BackWithConfig.ss' );
 
   var _ = _global_.wTools;
 
@@ -23,12 +14,10 @@ if( typeof module !== 'undefined' )
   _.include( 'wCopyable' );
 
   // require( 'include/dwtools/abase/l7_mixin/Copyable.s' );
-  // require( 'include/dwtools/l3/Path.s' );
-  // require( 'include/dwtools/amid/files/UseTop.s' );
+  // require( 'include/dwtools/l2/PathBasic.s' );
+  // require( 'include/dwtools/amid/l3/files/UseTop.s' );
 
-  _.include( 'wVocabulary' );
-
-  // require( 'include/dwtools/amid/bclass/Vocabulary.s' );
+  require( 'include/dwtools/amid/bclass/Vocabulary.s' );
 
   if( !_global_.GhiVocabulary )
   require( '../ghi/Vocabulary.s' );
@@ -66,7 +55,7 @@ function init( o )
 {
   var self = this;
 
-  _.instanceInit( self );
+  _.workpiece.initFields( self );
 
   Object.preventExtensions( self );
 
@@ -150,7 +139,7 @@ function _launch()
   var self = this;
   var initing = !self._terimnal;
 
-  _.assert( arguments.length === 0 );
+  _.assert( arguments.length === 0, 'Expects no arguments' );
 
   if( initing )
   {
@@ -237,10 +226,10 @@ function _handleLine( str )
 
   // logger.log( '_handleLine( before self._con )', line, self._con.resourcesGet().length );
 
-  self._con.doThen( function()
+  self._con.finally( function()
   {
 
-    // logger.log( '_handleLine( after self._con )', _.color.strFormatBackground( line,'red' ), self._con.resourcesGet().length );
+    // logger.log( '_handleLine( after self._con )', _.ct.bg( line,'red' ), self._con.resourcesGet().length );
 
     /* try to exit */
 
@@ -282,7 +271,7 @@ function _handleLine( str )
 
     // logger.log( '_handleLine( result ) :' , result.resourcesGet().length );
 
-    result.doThen( function( err,data )
+    result.finally( function( err,data )
     {
 
       try
@@ -463,7 +452,7 @@ function codeToInject()
 function registerBrowser()
 {
 
-  _.timeReady( function()
+  _.time.ready( function()
   {
 
     var $ = jQuery;
@@ -508,7 +497,7 @@ function vocabularyPhraseExecute( code )
 
   // debugger;
   code = code.substr( 1 );
-  var parts = _.strIsolateBeginOrNone({ src : code, delimeter : [ ' ','(',')' ] });
+  var parts = _.strIsolateLeftOrNone({ src : code, delimeter : [ ' ','(',')' ] });
   // debugger;
 
   // console.log( '\nparts',parts );
@@ -528,7 +517,7 @@ function vocabularyPhraseExecute( code )
 
   var argv = [];
   argv[ 3 ] = args;
-  var argsParsed = _.appArgs({ argv : argv });
+  var argsParsed = _.process.args({ argv : argv });
 
   for( var k in argsParsed.map )
   {
@@ -655,7 +644,7 @@ function commandExit()
 
   /* no forcefully exit should be here or timeout */
 
-  // _.timeOut( 5000, function()
+  // _.time.out( 5000, function()
   // {
   //
   //   // process.exit();
@@ -904,7 +893,7 @@ var Associates =
 
 var Restricts =
 {
-  _con : _.Consequence().give( null ),
+  _con : _.Consequence().take( null ),
 }
 
 var Events =
