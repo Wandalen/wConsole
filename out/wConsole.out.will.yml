@@ -155,14 +155,19 @@ module:
           - ../proto/dwtools/Tools.s
           - ../proto/dwtools/abase
           - ../proto/dwtools/amid
+          - ../proto/dwtools/amid/-console
+          - ../proto/dwtools/amid/-console/ConsoleService.s
+          - ../proto/dwtools/amid/-console/TerminalAbstract.s
+          - ../proto/dwtools/amid/-console/TerminalBrowser.s
+          - ../proto/dwtools/amid/-console/TerminalShell.ss
+          - ../proto/dwtools/amid/-console/Test
+          - ../proto/dwtools/amid/-console/Test/Terminal.js
+          - ../proto/dwtools/amid/-console/Test/test.html
           - ../proto/dwtools/amid/console
           - ../proto/dwtools/amid/console/ConsoleService.s
           - ../proto/dwtools/amid/console/TerminalAbstract.s
           - ../proto/dwtools/amid/console/TerminalBrowser.s
           - ../proto/dwtools/amid/console/TerminalShell.ss
-          - ../proto/dwtools/amid/console/Test
-          - ../proto/dwtools/amid/console/Test/Terminal.js
-          - ../proto/dwtools/amid/console/Test/test.html
           - ../proto/dwtools/amid/ghi
           - ../proto/dwtools/amid/ghi/Vocabulary.s
           - ../proto/dwtools/atop
@@ -1654,6 +1659,4 @@ module:
       ../.im.will.yml:
         hash: 7ecf372b2c2d918a1db92eea1efc0f56
         size: 6544
-      wConsole.out.will.yml:
-        hash: 675781cb7b59bd85268fdd9fc0fa96fd
-        size: 42077
+      wConsole.out.will.yml: *ref_0
