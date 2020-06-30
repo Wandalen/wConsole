@@ -104,7 +104,7 @@ function initVocabulary()
   })
   ;
 
-  /*_.uiInitGeneric( self.headDom );*/
+  /*_.dom.uiInitGeneric( self.headDom );*/
 
   self.headEnabled = self.headEnabled;
   self.headFocused = self.headFocused;
@@ -321,7 +321,7 @@ function subjectSet( subject )
   if( subjectWas === subject && subject )
   return;
 
-  self.handleSubjectBegin( subject ).give( function()
+  self.handleSubjectBegin( subject ).finallyGive( function()
   {
 
     self.subject = subject;
@@ -438,9 +438,9 @@ function activate( o )
 
   if( _.strIs( o ) )
   o = { phrase : o };
-  else if( _.eventIs( o ) )
+  else if( _.dom.eventIs( o ) )
   o = { phrase : $( o.target ).attr( 'phrase' ) };
-  else if( _.domIs( o ) || _.jqueryIs( o ) )
+  else if( _.dom.is( o ) || _.dom.jqueryIs( o ) )
   o = { phrase : $( o ).attr( 'phrase' ) };
   else if( !_.mapIs( o ) )
   throw _.err( 'unexepected arguments' );
@@ -552,6 +552,7 @@ function handleActivate( action,args,argsMap )
   {
     try
     {
+      debugger
       con = action.onActivate.call( action.context || self.context,e );
     }
     catch( _err )
@@ -666,8 +667,8 @@ function handleActivateEnd( e )
     var item = self.phrasesDom.find( '.item' + '[ phrase="' + e.phrase + '" ]' );
     item.removeClass( 'active' );
 
-    /*alert( _.toStrSimple( 'action','"'+e.phrase+'"','has just done!' ) );*/
-    console.log( _.toStrSimple( 'action','"'+e.phrase+'"','has just done!' ) );
+    /*alert( _.str( 'action','"'+e.phrase+'"','has just done!' ) );*/
+    console.log( `action, "${e.phrase}" has just done!` );
 
   }
 
@@ -705,7 +706,7 @@ function _headEnabledGet( src )
   return self[ Symbol.for( 'headEnabled' ) ];
 /*
   var input = self.headDom.find( 'input' );
-  return !_.toStrSimple( input.attr( 'disabled' ) );
+  return !_.str( input.attr( 'disabled' ) );
 */
 }
 
