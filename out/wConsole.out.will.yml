@@ -150,6 +150,7 @@ module:
           export: 1
         path:
           - ../proto
+          - ../proto/Integration.test.s
           - ../proto/Tools.s
           - ../proto/dwtools
           - ../proto/dwtools/Tools.s
