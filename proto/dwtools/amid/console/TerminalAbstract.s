@@ -9,7 +9,7 @@ if( typeof module !== 'undefined' )
   require( 'include/dwtools/abase/l7_mixin/Copyable.s' );
   require( 'include/dwtools/abase/l7_mixin/Instancing.s' );
   require( 'include/dwtools/abase/l7_mixin/EventHandler.s' );
-  require( 'include/dwtools/l2/PathBasic.s' );
+  require( 'include/dwtools/abase/l0/l5/fPath.s' );
 
   var _ = _global_.wTools;
 
@@ -73,7 +73,7 @@ function prompt()
 
 function question( question )
 {
-  _.assert( arguments.length === 1, 'Expects single argument' );
+  _.assert( arguments.length === 1, 'expects single argument' );
 
   this._writeOutput( question );
   this.prompt();
@@ -224,7 +224,7 @@ function _lineEnded( line )
 {
   var self = this;
 
-  _.assert( arguments.length === 1, 'Expects single argument' );
+  _.assert( arguments.length === 1, 'expects single argument' );
   _.assert( _.strIs( line ) );
 
   self.line = line;
@@ -252,6 +252,8 @@ function _lineRefresh()
   var line = self.textPrompt + self.line;
 
   self._rewriteInput( line );
+
+  return null;
 
 }
 
@@ -285,7 +287,7 @@ function lineCursorOffset( dx )
 function _lineInsertString( str )
 {
 
-  _.assert( arguments.length === 1, 'Expects single argument' );
+  _.assert( arguments.length === 1, 'expects single argument' );
 
   throw _.err( 'not implemented' );
 
@@ -444,7 +446,7 @@ var Composes =
 var Associates =
 {
 
-  history : [ 'aaa','bbb','ccc','dd\neeee','d\nee\nfff' ],
+  history : _.define.own( [ 'aaa','bbb','ccc','dd\neeee','d\nee\nfff' ] ),
   historyIndex : -1,
   historyLimit : 128,
   usingHistoryFile : 1,
@@ -557,7 +559,7 @@ _.EventHandler.mixin( Self );
 
 //
 
-if( typeof module !== 'undefined' )
+if( typeof module !== 'undefined' && module !== null )
 module[ 'exports' ] = Self;
 _global_[ Self.name ] = _[ Self.shortName ] = Self;
 

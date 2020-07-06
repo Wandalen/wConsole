@@ -13,11 +13,11 @@ if( typeof module !== 'undefined' )
   _.include( 'wPathBasic'/*ttt*/ );
   _.include( 'wCopyable' );
 
-  // require( 'include/dwtools/abase/l7_mixin/Copyable.s' );
-  // require( 'include/dwtools/l2/PathBasic.s' );
-  // require( 'include/dwtools/amid/l3/files/UseTop.s' );
+  // require( 'include/dwtools/abase/mixin/Copyable.s' );
+  // require( 'include/dwtools/abase/layer3/Path.s' );
+  // require( 'include/dwtools/amid/files/UseTop.s' );
 
-  require( 'include/dwtools/amid/bclass/Vocabulary.s' );
+  require( 'include/dwtools/amid/ghi/Vocabulary.s' );
 
   if( !_global_.GhiVocabulary )
   require( '../ghi/Vocabulary.s' );
@@ -67,7 +67,7 @@ function init( o )
 
     context : self,
     headEnabled : false,
-    usingClausing : true,
+    clausing : true,
     usingClausingAtActionGet : false,
     usingGui : false,
 
@@ -139,7 +139,7 @@ function _launch()
   var self = this;
   var initing = !self._terimnal;
 
-  _.assert( arguments.length === 0, 'Expects no arguments' );
+  _.assert( arguments.length === 0 );
 
   if( initing )
   {
@@ -208,7 +208,7 @@ function _handleLine( str )
 {
   var self = this;
 
-  _.assert( arguments.length === 1, 'Expects single argument' );
+  _.assert( arguments.length === 1, 'expects single argument' );
 
   var result = null;
 
@@ -229,7 +229,7 @@ function _handleLine( str )
   self._con.finally( function()
   {
 
-    // logger.log( '_handleLine( after self._con )', _.ct.bg( line,'red' ), self._con.resourcesGet().length );
+    // logger.log( '_handleLine( after self._con )', _.color.strFormatBackground( line,'red' ), self._con.resourcesGet().length );
 
     /* try to exit */
 
@@ -238,7 +238,7 @@ function _handleLine( str )
       self._terimnal.pause();
       console.log( '!' );
       commandExit.call( self );
-      return;
+      return null;
     }
 
     /* execute builtin command */
@@ -262,12 +262,12 @@ function _handleLine( str )
     if( str[ 0 ] === '.' )
     {
       logger.error( 'command not known :',str );
-      return;
+      return null;
     }
 
     /* execute in the original environment */
 
-    result = _.Consequence.From( result );
+    result = wConsequence.From( result );
 
     // logger.log( '_handleLine( result ) :' , result.resourcesGet().length );
 
@@ -289,7 +289,7 @@ function _handleLine( str )
         // logger.log( c );
 
         if( c === false )
-        return;
+        return null;
         else
         return data;
 
@@ -299,6 +299,7 @@ function _handleLine( str )
         _.errLogOnce( err );
       }
 
+      return null;
 
     });
 
@@ -317,7 +318,7 @@ function _handleLineAct( line )
 {
   var self = this;
 
-  _.assert( arguments.length === 1, 'Expects single argument' );
+  _.assert( arguments.length === 1, 'expects single argument' );
 
   var embraced = '';
   if( line )
@@ -366,7 +367,7 @@ function write( src )
 {
   var self = this;
 
-  _.assert( arguments.length === 1, 'Expects single argument' );
+  _.assert( arguments.length === 1, 'expects single argument' );
   _.assert( _.strIs( src ) );
 
   if( self._terimnal )
@@ -383,13 +384,13 @@ function writePhrase( src )
 {
   var self = this;
 
-  _.assert( arguments.length === 1, 'Expects single argument' );
+  _.assert( arguments.length === 1, 'expects single argument' );
   _.assert( _.strIs( src ) );
 
   if( !src )
   return;
 
-  src = _.strSplitNonPreserving/**1**/({ src : src, delimeter : [ ';' ] });
+  src = _.strSplitNonPreserving({ src : src, delimeter : [ ';' ] });
 
   self.write( src.join( '\n' ) + '\n' );
 
@@ -486,7 +487,7 @@ function vocabularyPhraseExecute( code )
   var result = false;
 
   _.assert( _.strIs( code ) );
-  _.assert( arguments.length === 1, 'Expects single argument' );
+  _.assert( arguments.length === 1, 'expects single argument' );
 
   var vocabulary = self.vocabulary;
   if( !vocabulary )
@@ -505,7 +506,7 @@ function vocabularyPhraseExecute( code )
   if( parts[ 0 ] )
   code = parts[ 0 ];
 
-  var splitted = _.strSplitNonPreserving/**1**/({ src : code, delimeter : [ '.' ] });
+  var splitted = _.strSplitNonPreserving({ src : code, delimeter : [ '.' ] });
 
   var args = '';
 
@@ -515,9 +516,9 @@ function vocabularyPhraseExecute( code )
     args = _.strStrip({ src : args, stripper : [ ' ','(',')' ] });
   }
 
-  var argv = [];
-  argv[ 3 ] = args;
-  var argsParsed = _.process.args({ argv : argv });
+  // var argv = [];
+  process.argv[ 3 ] = args;
+  var argsParsed = _.process.args();
 
   for( var k in argsParsed.map )
   {
@@ -531,7 +532,7 @@ function vocabularyPhraseExecute( code )
       else
       {
         var str =  _.strStrip({ src : elem, stripper : [ '[',']' ]});
-        var strSplitted = _.strSplitNonPreserving/**1**/({ src : str, delimeter : ',' });
+        var strSplitted = _.strSplitNonPreserving({ src : str, delimeter : ',' });
         if( strSplitted.length > 1 )
         argsParsed.map[ k ] = strSplitted.map( ( e ) => _.numberFrom( e ) );
       }
@@ -606,7 +607,7 @@ function vocabularyPhraseExecute( code )
 function log( src )
 {
 
-  _.assert( arguments.length === 1, 'Expects single argument' );
+  _.assert( arguments.length === 1, 'expects single argument' );
 
   logger.log( _.toStr( src,{ wrap : 0, levels : 2, multiline : 1 } ) );
 
@@ -642,6 +643,8 @@ function commandExit()
 
   logger.log( 'exiting..' );
 
+  return self._terimnal.close();
+
   /* no forcefully exit should be here or timeout */
 
   // _.time.out( 5000, function()
@@ -650,7 +653,6 @@ function commandExit()
   //   // process.exit();
   //
   // });
-
 }
 
 commandExit.action =
@@ -700,7 +702,7 @@ function commandHelp()
     if( !hint[ i ] )
     hint[ i ] = phrases2[ i ];
 
-    var phrases = _.strJoin([ '.',phrases1,' - ',hint ]);
+    var phrases = _.strJoin( '.',phrases1,' - ',hint );
     self.log( phrases );
     logger.logDown( '' );
 
@@ -722,6 +724,8 @@ function commandHelp()
 */
 
   }
+
+  return self;
 
 }
 
@@ -893,7 +897,7 @@ var Associates =
 
 var Restricts =
 {
-  _con : _.Consequence().take( null ),
+  _con : _.define.own( _.Consequence().take( null ) ),
 }
 
 var Events =
