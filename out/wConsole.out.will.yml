@@ -108,7 +108,7 @@ module:
       entry.proto.no.tests:
         criterion:
           tests: no.tests
-        path: ../proto/dwtools/amid/console/ConsoleService.s
+        path: ../proto/wtools/amid/console/ConsoleService.s
       entry.proto.only.tests:
         criterion:
           tests: only.tests
@@ -118,13 +118,13 @@ module:
           debug: debug
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/dwtools/amid/console/ConsoleService.s'
+        path: '{path::out.*=1}/source/wtools/amid/console/ConsoleService.s'
       entry.out.raw.debug.release:
         criterion:
           debug: release
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/dwtools/amid/console/ConsoleService.s'
+        path: '{path::out.*=1}/source/wtools/amid/console/ConsoleService.s'
       entry.out.compiled.debug.debug:
         criterion:
           debug: debug
@@ -152,26 +152,26 @@ module:
           - ../proto
           - ../proto/Integration.test.s
           - ../proto/Tools.s
-          - ../proto/dwtools
-          - ../proto/dwtools/Tools.s
-          - ../proto/dwtools/abase
-          - ../proto/dwtools/amid
-          - ../proto/dwtools/amid/-console
-          - ../proto/dwtools/amid/-console/ConsoleService.s
-          - ../proto/dwtools/amid/-console/TerminalAbstract.s
-          - ../proto/dwtools/amid/-console/TerminalBrowser.s
-          - ../proto/dwtools/amid/-console/TerminalShell.ss
-          - ../proto/dwtools/amid/-console/Test
-          - ../proto/dwtools/amid/-console/Test/Terminal.js
-          - ../proto/dwtools/amid/-console/Test/test.html
-          - ../proto/dwtools/amid/console
-          - ../proto/dwtools/amid/console/ConsoleService.s
-          - ../proto/dwtools/amid/console/TerminalAbstract.s
-          - ../proto/dwtools/amid/console/TerminalBrowser.s
-          - ../proto/dwtools/amid/console/TerminalShell.ss
-          - ../proto/dwtools/amid/ghi
-          - ../proto/dwtools/amid/ghi/Vocabulary.s
-          - ../proto/dwtools/atop
+          - ../proto/wtools
+          - ../proto/wtools/Tools.s
+          - ../proto/wtools/abase
+          - ../proto/wtools/amid
+          - ../proto/wtools/amid/-console
+          - ../proto/wtools/amid/-console/ConsoleService.s
+          - ../proto/wtools/amid/-console/TerminalAbstract.s
+          - ../proto/wtools/amid/-console/TerminalBrowser.s
+          - ../proto/wtools/amid/-console/TerminalShell.ss
+          - ../proto/wtools/amid/-console/Test
+          - ../proto/wtools/amid/-console/Test/Terminal.js
+          - ../proto/wtools/amid/-console/Test/test.html
+          - ../proto/wtools/amid/console
+          - ../proto/wtools/amid/console/ConsoleService.s
+          - ../proto/wtools/amid/console/TerminalAbstract.s
+          - ../proto/wtools/amid/console/TerminalBrowser.s
+          - ../proto/wtools/amid/console/TerminalShell.ss
+          - ../proto/wtools/amid/ghi
+          - ../proto/wtools/amid/ghi/Vocabulary.s
+          - ../proto/wtools/atop
     submodule:
       wTools:
         path: 'npm:///wTools'
@@ -989,7 +989,7 @@ module:
       entry.proto.no.tests:
         criterion:
           tests: no.tests
-        path: proto/dwtools/amid/console/ConsoleService.s
+        path: proto/wtools/amid/console/ConsoleService.s
       entry.proto.only.tests:
         criterion:
           tests: only.tests
@@ -999,13 +999,13 @@ module:
           debug: debug
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/dwtools/amid/console/ConsoleService.s'
+        path: '{path::out.*=1}/source/wtools/amid/console/ConsoleService.s'
       entry.out.raw.debug.release:
         criterion:
           debug: release
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/dwtools/amid/console/ConsoleService.s'
+        path: '{path::out.*=1}/source/wtools/amid/console/ConsoleService.s'
       entry.out.compiled.debug.debug:
         criterion:
           debug: debug

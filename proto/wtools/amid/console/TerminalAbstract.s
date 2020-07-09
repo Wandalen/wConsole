@@ -6,10 +6,10 @@ if( typeof module !== 'undefined' )
 {
 
   require( '../../BackWithConfig.ss' );
-  require( 'include/dwtools/abase/l7_mixin/Copyable.s' );
-  require( 'include/dwtools/abase/l7_mixin/Instancing.s' );
-  require( 'include/dwtools/abase/l7_mixin/EventHandler.s' );
-  require( 'include/dwtools/abase/l0/l5/fPath.s' );
+  require( 'include/wtools/abase/l7_mixin/Copyable.s' );
+  require( 'include/wtools/abase/l7_mixin/Instancing.s' );
+  require( 'include/wtools/abase/l7_mixin/EventHandler.s' );
+  require( 'include/wtools/abase/l0/l5/fPath.s' );
 
   var _ = _global_.wTools;
 

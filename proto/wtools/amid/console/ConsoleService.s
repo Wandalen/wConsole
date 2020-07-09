@@ -13,11 +13,11 @@ if( typeof module !== 'undefined' )
   _.include( 'wPathBasic'/*ttt*/ );
   _.include( 'wCopyable' );
 
-  // require( 'include/dwtools/abase/mixin/Copyable.s' );
-  // require( 'include/dwtools/abase/layer3/Path.s' );
-  // require( 'include/dwtools/amid/files/UseTop.s' );
+  // require( 'include/wtools/abase/mixin/Copyable.s' );
+  // require( 'include/wtools/abase/layer3/Path.s' );
+  // require( 'include/wtools/amid/files/UseTop.s' );
 
-  require( 'include/dwtools/amid/ghi/Vocabulary.s' );
+  require( 'include/wtools/amid/ghi/Vocabulary.s' );
 
   if( !_global_.GhiVocabulary )
   require( '../ghi/Vocabulary.s' );
