@@ -1660,6 +1660,4 @@ module:
       ../.im.will.yml:
         hash: 9863ac546abcbc83187cd4cd2a16db36
         size: 6541
-      wConsole.out.will.yml:
-        hash: 4986b7312025cd3ca179c351e66e5e01
-        size: 42526
+      wConsole.out.will.yml: *ref_0
