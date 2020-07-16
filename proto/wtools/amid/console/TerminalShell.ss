@@ -26,7 +26,7 @@ if( typeof module !== 'undefined' )
 
   //
 
-  var _ = _global_.wTools;
+  let _ = _global_.wTools;
   var File = null;
   var BufferNode = require( 'buffer' ).BufferNode;
   var ReadLine = require( 'readline' );
@@ -71,9 +71,9 @@ if( typeof module !== 'undefined' )
 
 //
 
-var _ = _global_.wTools;
-var Parent = wTerminalAbstract;
-var Self = function wTerminalShell( o )
+let _ = _global_.wTools;
+let Parent = wTerminalAbstract;
+let Self = function wTerminalShell( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }

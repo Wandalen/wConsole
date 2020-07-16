@@ -5,9 +5,9 @@
 //
 
 var $ = jQuery;
-var _ = _global_.wTools;
-var Parent = wTerminalAbstract;
-var Self = function wTerminalBrowser( o )
+let _ = _global_.wTools;
+let Parent = wTerminalAbstract;
+let Self = function wTerminalBrowser( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }

@@ -7,7 +7,7 @@ if( typeof module !== 'undefined' )
 
   require( '../../BackWithConfig.ss' );
 
-  var _ = _global_.wTools;
+  let _ = _global_.wTools;
 
   _.include( 'wLogger' );
   _.include( 'wPathBasic'/*ttt*/ );
@@ -40,9 +40,9 @@ if( typeof module !== 'undefined' )
 
 //
 
-var _ = _global_.wTools;
-var Parent = null;
-var Self = function wConsoleService( o )
+let _ = _global_.wTools;
+let Parent = null;
+let Self = function wConsoleService( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }

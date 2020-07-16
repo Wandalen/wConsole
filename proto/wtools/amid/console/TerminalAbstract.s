@@ -11,7 +11,7 @@ if( typeof module !== 'undefined' )
   require( 'include/wtools/abase/l7_mixin/EventHandler.s' );
   require( 'include/wtools/abase/l0/l5/fPath.s' );
 
-  var _ = _global_.wTools;
+  let _ = _global_.wTools;
 
   _.include( 'wLogger' );
 
@@ -19,9 +19,9 @@ if( typeof module !== 'undefined' )
 
 //
 
-var _ = _global_.wTools;
-var Parent = Object;
-var Self = function wTerminalAbstract( o )
+let _ = _global_.wTools;
+let Parent = Object;
+let Self = function wTerminalAbstract( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }
