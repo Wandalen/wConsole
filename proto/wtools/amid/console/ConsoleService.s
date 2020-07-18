@@ -229,7 +229,7 @@ function _handleLine( str )
   self._con.finally( function()
   {
 
-    // logger.log( '_handleLine( after self._con )', _.color.strFormatBackground( line,'red' ), self._con.resourcesGet().length );
+    // logger.log( '_handleLine( after self._con )', _.ct.bg( line,'red' ), self._con.resourcesGet().length );
 
     /* try to exit */
 
