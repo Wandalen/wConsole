@@ -25,8 +25,8 @@ submodule :
   wPathBasic :
     path : npm:///wpathbasic
     enabled : 0 # submodule
-  wRoutineBasic :
-    path : npm:///wroutinebasic
+  wIntrospectorBasic :
+    path : npm:///wintrospectorbasic
     enabled : 0 # submodule
   wSelector :
     path : npm:///wselector

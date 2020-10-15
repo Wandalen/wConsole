@@ -30,7 +30,7 @@
     "wprocess" : "alpha",
     "wfieldsstack" : "alpha",
     "wpathbasic" : "alpha",
-    "wroutinebasic" : "alpha",
+    "wintrospectorbasic" : "alpha",
     "wselector" : "alpha",
     "wstarter" : "alpha",
     "wstringer" : "alpha",
