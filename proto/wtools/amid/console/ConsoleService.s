@@ -518,7 +518,7 @@ function vocabularyPhraseExecute( code )
 
   // var argv = [];
   process.argv[ 3 ] = args;
-  var argsParsed = _.process.args();
+  var argsParsed = _.process.input();
 
   for( var k in argsParsed.map )
   {
