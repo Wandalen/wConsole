@@ -453,7 +453,7 @@ function codeToInject()
 function registerBrowser()
 {
 
-  _.time.ready( function()
+  _.process.ready( function()
   {
 
     var $ = jQuery;
