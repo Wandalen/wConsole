@@ -1,4 +1,5 @@
- ( function _TerminalBrowser_s_() {
+( function _TerminalBrowser_s_()
+{
 
 'use strict';
 
@@ -7,7 +8,8 @@
 var $ = jQuery;
 let _ = _global_.wTools;
 let Parent = wTerminalAbstract;
-let Self = function wTerminalBrowser( o )
+let Self = wTerminalBrowser;
+function wTerminalBrowser( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }
@@ -18,7 +20,7 @@ function init( o )
 {
   var self = this;
 
-  Parent.prototype.init.call( self,o );
+  Parent.prototype.init.call( self, o );
 
   self.initDom();
   self.hookConsole();
@@ -31,6 +33,7 @@ function initDom()
 {
   var self = this;
 
+  var targetDom;
   if( !self.targetDom )
   {
 
@@ -43,15 +46,15 @@ function initDom()
     code += '  <input class="" type="text" name="lname">';
     code += '</div>'
 
-    var targetDom = self.targetDom = $( code ).appendTo( self.containerDom );
+    targetDom = self.targetDom = $( code ).appendTo( self.containerDom );
 
     targetDom.css
     ({
-      width : '100%',
-      height : '100%',
-      bottom : '0',
-      position : 'absolute',
-      background : 'black',
+      'width' : '100%',
+      'height' : '100%',
+      'bottom' : '0',
+      'position' : 'absolute',
+      'background' : 'black',
       'z-index' : 1000,
       'font-family' : 'monospace',
       'font-size' : '11px',
@@ -60,42 +63,42 @@ function initDom()
 
     targetDom.find( 'textarea' ).css
     ({
-      width : '100%',
-      height : 'calc( 100% - 3em )',
-      background : 'transparent',
-      color : '#0f0',
-      border : 'none',
-      resize : 'none',
-      padding : '0.5em',
-      margin : 0,
-      outline : 'none',
+      'width' : '100%',
+      'height' : 'calc( 100% - 3em )',
+      'background' : 'transparent',
+      'color' : '#0f0',
+      'border' : 'none',
+      'resize' : 'none',
+      'padding' : '0.5em',
+      'margin' : 0,
+      'outline' : 'none',
       'font-family' : 'monospace',
     });
 
     targetDom.find( 'input' ).css
     ({
-      width : '100%',
-      height : '2.5em',
-      bottom : '0',
-      background : '#333',
-      color : 'white',
-      border : 'none',
-      padding : 0,
-      margin : 0,
-      padding : '0 0.5em',
-      outline : 'none',
+      'width' : '100%',
+      'height' : '2.5em',
+      'bottom' : '0',
+      'background' : '#333',
+      'color' : 'white',
+      'border' : 'none',
+      // 'padding' : 0,
+      'margin' : 0,
+      'padding' : '0 0.5em',
+      'outline' : 'none',
       'font-family' : 'monospace',
       'font-size' : '1.1em',
     });
 
   }
 
-  var targetDom = self.targetDom = $( self.targetDom );
+  targetDom = self.targetDom = $( self.targetDom );
   var inputDom = self.inputDom = self.targetDom.find( 'input' );
 
-  _.assert( inputDom.length,'no input found' );
+  _.assert( inputDom.length, 'no input found' );
 
-  self.handleStreamData = _.routineJoin( self,Self.prototype.handleStreamData );
+  self.handleStreamData = _.routineJoin( self, Self.prototype.handleStreamData );
 
   inputDom.bind( 'keydown', function( e )
   {
@@ -104,28 +107,28 @@ function initDom()
 
     switch( e.which )
     {
-      // case 37 : /* left */
-      // break;
+    // case 37 : /* left */
+    // break;
 
-      // case 39 : /* right */
-      // break;
+    // case 39 : /* right */
+    // break;
 
-      case 38 : /* up */
+    case 38 : /* up */
       self._historyPrev();
       break;
 
-      case 40 : /* down */
+    case 40 : /* down */
       self._historyNext();
       break;
 
-      default: return;
+    default : return;
     }
 
     e.preventDefault();
 
   });
 
-  inputDom.bind( 'keypress',function( e )
+  inputDom.bind( 'keypress', function( e )
   {
 
     // console.log( 'keypress :',e.keyCode );
@@ -134,7 +137,7 @@ function initDom()
     return;
 
     var s = this.value;
-    var u = _.strUnjoin( s,[ self.textPrompt,_.strUnjoin.any ] );
+    var u = _.strUnjoin( s, [ self.textPrompt, _.strUnjoin.any ] );
 
     self.handleStreamData( ( u ? u[ 1 ] : s ) + '\n' );
 
@@ -151,10 +154,7 @@ function hookConsole()
 {
   var self = this;
 
-  var methods =
-  [
-    'log', 'debug', 'error', 'info', 'warn',
-  ];
+  var methods = [ 'log', 'debug', 'error', 'info', 'warn' ];
 
   for( var m in methods ) ( function()
   {
@@ -163,9 +163,9 @@ function hookConsole()
     _.assert( !!original );
     console[ methods[ m ] ] = function()
     {
-      var src = _.toStrSimple.apply( _,arguments );
+      var src = _.toStrSimple.apply( _, arguments );
       self._writeOutput( src + '\n' );
-      return original.apply( this,arguments );
+      return original.apply( this, arguments );
     }
 
   })();
@@ -203,7 +203,7 @@ function _rewriteInput( srcString )
 
   textarea[ 0 ].value = srcString;
 
-  _.dom.caretSelect( textarea,[ srcString.length,srcString.length ] );
+  _.dom.caretSelect( textarea, [ srcString.length, srcString.length ] );
 
 }
 
@@ -262,8 +262,8 @@ var Composes =
 
   name : 'wTerminalBrowser',
 
-  onHistorySave : onHistorySave,
-  onHistoryLoad : onHistoryLoad,
+  onHistorySave,
+  onHistoryLoad,
 
 }
 
@@ -285,27 +285,27 @@ var Restricts =
 var Proto =
 {
 
-  init : init,
-  initDom : initDom,
-  hookConsole : hookConsole,
+  init,
+  initDom,
+  hookConsole,
 
-  _writeOutput : _writeOutput,
-  _rewriteInput : _rewriteInput,
+  _writeOutput,
+  _rewriteInput,
 
 
   // history
 
-  _historyEvalPath : _historyEvalPath,
-  onHistorySave : onHistorySave,
-  onHistoryLoad : onHistoryLoad,
+  _historyEvalPath,
+  onHistorySave,
+  onHistoryLoad,
 
 
   // relations
 
 
-  Composes : Composes,
-  Associates : Associates,
-  Restricts : Restricts,
+  Composes,
+  Associates,
+  Restricts,
 
 }
 
