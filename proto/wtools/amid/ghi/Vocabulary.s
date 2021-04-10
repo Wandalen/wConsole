@@ -6,9 +6,9 @@
 if( typeof module !== 'undefined' )
 {
 
-  require( '../../../wtools/Tools.s' );
+  require( '../../../node_modules/Tools' );
 
-  let _ = _global_.wTools;
+  const _ = _global_.wTools;
 
   _.include( 'wLogger' );
   _.include( 'wVocabulary' );
@@ -17,10 +17,10 @@ if( typeof module !== 'undefined' )
 
 //
 
-var $ = typeof jQuery !== 'undefined' ? jQuery : null;
-let _ = _global_.wTools;
-let Parent = null;
-let Self = wGhiVocabulary;
+var $ = typeof jQuery === 'undefined' ? null : jQuery;
+const _ = _global_.wTools;
+const Parent = null;
+const Self = wGhiVocabulary;
 function wGhiVocabulary( o )
 {
   return _.workpiece.construct( Self, this, arguments );
@@ -155,7 +155,7 @@ function actionsRegister( phrases, o )
 
   _.assert( arguments.length <= 2 );
 
-  function onPhraseDescriptorMake( action )
+  function onPhraseDescriptorFrom( action )
   {
     if( _.routineIs( action ) )
     action = action.action;
@@ -166,7 +166,7 @@ function actionsRegister( phrases, o )
     }
     else if( _.mapIs( action ) )
     {
-      _.assertMapHasOnly( action, phraseOptionsDefault );
+      _.map.assertHasOnly( action, phraseOptionsDefault );
     }
     else throw _.err( 'unexpected' );
 
@@ -193,7 +193,7 @@ function actionsRegister( phrases, o )
 
   var vocabulary = self.vocabulary = self.vocabulary || wVocabulary
   ({
-    onPhraseDescriptorMake,
+    onPhraseDescriptorFrom,
     clausing : self.clausing,
   });
 
@@ -233,7 +233,7 @@ function actionGet( phrase )
     */
 
     if( !result.action )
-    result.action = self.vocabulary.descriptorMap[ phrase ];
+    result.action = self.vocabulary.phraseMap[ phrase ];
 
     if( result.action )
     break;
@@ -275,7 +275,8 @@ function actionsForSubject( subject )
 {
   var self = this;
 
-  var result = self.vocabulary.subjectDescriptorForWithClause( subject, self.clausing );
+  var result = self.vocabulary.withSubphrase( subject );
+  // var result = self.vocabulary.subjectDescriptorForWithClause( subject, self.clausing );
 
   return result;
 }
@@ -553,12 +554,10 @@ function handleActivate( action, args, argsMap )
   {
     try
     {
-      debugger
       con = action.onActivate.call( action.context || self.context, e );
     }
     catch( _err )
     {
-      debugger;
       var err = _.err( 'error executing onActive of', action.phrase, 'action\n', _err );
       _.errLog( err );
       con = new _.Consequence().error( err );
@@ -632,7 +631,6 @@ function handleActivateEnd( e )
 
   if( self.activeAction !== e.action )
   {
-    debugger;
     throw _.err( 'action', '"'+e.action.phrase+'"', 'is not active to be deactivated', '\ncurrent active action :', '"'+self.activeAction.phrase+'"' );
   }
 
@@ -862,7 +860,7 @@ var Accessors =
 // proto
 // --
 
-var Proto =
+const Proto =
 {
 
   init,

@@ -7,7 +7,7 @@ if( typeof module !== 'undefined' )
 
   require( '../../BackWithConfig.ss' );
 
-  let _ = _global_.wTools;
+  const _ = _global_.wTools;
 
   _.include( 'wLogger' );
   _.include( 'wPathBasic'/*ttt*/ );
@@ -40,9 +40,9 @@ if( typeof module !== 'undefined' )
 
 //
 
-let _ = _global_.wTools;
-let Parent = null;
-let Self = function wConsoleService( o )
+const _ = _global_.wTools;
+const Parent = null;
+const Self = function wConsoleService( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }
@@ -406,7 +406,7 @@ function codeEmbrace( code )
   var self = this;
 
   if( !/;/.test( code ) )
-  code = 'console.log( _.toStr( ' + code + ' ) );';
+  code = 'console.log( _.entity.exportString( ' + code + ' ) );';
 
   code =
   [
@@ -548,7 +548,7 @@ function vocabularyPhraseExecute( code )
   if( a.action )
   {
 
-    /* logger.log( 'action found :\n' + _.toStr( a ) ); */
+    /* logger.log( 'action found :\n' + _.entity.exportString( a ) ); */
 
     if( a.action.onActivate )
     {
@@ -572,7 +572,7 @@ function vocabularyPhraseExecute( code )
     }
     else
     {
-      logger.log( 'action without onActivate :\n' + _.toStr( a.action ) );
+      logger.log( 'action without onActivate :\n' + _.entity.exportString( a.action ) );
       result = true;
     }
 
@@ -609,7 +609,7 @@ function log( src )
 
   _.assert( arguments.length === 1, 'expects single argument' );
 
-  logger.log( _.toStr( src,{ wrap : 0, levels : 2, multiline : 1 } ) );
+  logger.log( _.entity.exportString( src,{ wrap : 0, levels : 2, multiline : 1 } ) );
 
 }
 
@@ -692,7 +692,7 @@ function commandHelp()
     logger.logUp( 'Phrases :' );
     logger.log( '' );
 
-    //logger.log( 'vocabulary :\n' + _.toStr( vocabulary.vocabulary,{ levels : 2 } ) );
+    //logger.log( 'vocabulary :\n' + _.entity.exportString( vocabulary.vocabulary,{ levels : 2 } ) );
 
     var phrases1 = vocabulary.phrasesGet({ wordDelimeter : '.' });
     var phrases2 = vocabulary.phrasesGet();
@@ -761,7 +761,7 @@ function commandLs()
 
   var files = _.filesList( _.path.current() );
 
-  logger.log( _.toStr( files,{ wrap : 0, multiline : 1 } ) );
+  logger.log( _.entity.exportString( files,{ wrap : 0, multiline : 1 } ) );
 
 }
 
@@ -801,7 +801,7 @@ function commandPath()
   var self = this;
   var result = '';
 
-  /*console.log( 'commandPath.arguments :',_.toStr( arguments ) );*/
+  /*console.log( 'commandPath.arguments :',_.entity.exportString( arguments ) );*/
 
   try
   {
@@ -909,7 +909,7 @@ var Events =
 // declare
 // --
 
-var Proto =
+const Proto =
 {
 
   init : init,

@@ -5,9 +5,9 @@
 //
 
 var $ = jQuery;
-let _ = _global_.wTools;
-let Parent = wTerminalAbstract;
-let Self = function wTerminalBrowser( o )
+const _ = _global_.wTools;
+const Parent = wTerminalAbstract;
+const Self = function wTerminalBrowser( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }
@@ -163,7 +163,7 @@ function hookConsole()
     _.assert( !!original );
     console[ methods[ m ] ] = function()
     {
-      var src = _.toStrSimple.apply( _,arguments );
+      var src = _.entity.exportStringSimple.apply( _,arguments );
       self._writeOutput( src + '\n' );
       return original.apply( this,arguments );
     }
@@ -282,7 +282,7 @@ var Restricts =
 // declare
 // --
 
-var Proto =
+const Proto =
 {
 
   init : init,

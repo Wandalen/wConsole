@@ -11,7 +11,7 @@ if( typeof module !== 'undefined' )
   require( 'include/wtools/abase/l7_mixin/EventHandler.s' );
   require( 'include/wtools/abase/l0/l5/fPath.s' );
 
-  let _ = _global_.wTools;
+  const _ = _global_.wTools;
 
   _.include( 'wLogger' );
 
@@ -19,9 +19,9 @@ if( typeof module !== 'undefined' )
 
 //
 
-let _ = _global_.wTools;
-let Parent = Object;
-let Self = function wTerminalAbstract( o )
+const _ = _global_.wTools;
+const Parent = Object;
+const Self = function wTerminalAbstract( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }
@@ -487,7 +487,7 @@ var Events =
 // declare
 // --
 
-var Proto =
+const Proto =
 {
 
   init : init,

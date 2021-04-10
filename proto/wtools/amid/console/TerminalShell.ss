@@ -26,7 +26,7 @@ if( typeof module !== 'undefined' )
 
   //
 
-  let _ = _global_.wTools;
+  const _ = _global_.wTools;
   var File = null;
   var BufferNode = require( 'buffer' ).BufferNode;
   var ReadLine = require( 'readline' );
@@ -71,9 +71,9 @@ if( typeof module !== 'undefined' )
 
 //
 
-let _ = _global_.wTools;
-let Parent = wTerminalAbstract;
-let Self = function wTerminalShell( o )
+const _ = _global_.wTools;
+const Parent = wTerminalAbstract;
+const Self = function wTerminalShell( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }
@@ -677,7 +677,7 @@ function _writtenTerminal( srcStr, key )
   if( key.name == 'escape' )
   return;
 
-  //console.log( 'key\n' + _.toStr( key ) );
+  //console.log( 'key\n' + _.entity.exportString( key ) );
   //console.log( 'key\n' + JSON.stringify( key ) );
 
   // if( key.meta )
@@ -1922,7 +1922,7 @@ var Restricts =
 // declare
 // --
 
-var Proto =
+const Proto =
 {
 
 
