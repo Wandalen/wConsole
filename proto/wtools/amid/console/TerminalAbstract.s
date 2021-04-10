@@ -1,4 +1,5 @@
- ( function _TerminalAbstract_s_(){
+( function _TerminalAbstract_s_()
+{
 
 'use strict';
 
@@ -65,7 +66,7 @@ function prompt()
 {
 
   if( this.isPaused )
-  throw _.err( 'ConsoleTerminal','is paused' );
+  throw _.err( 'ConsoleTerminal', 'is paused' );
 
 }
 
@@ -201,7 +202,7 @@ function _lineBegin()
   self._writeOutput( '\r\n' );
   self.line = '';
   self.inputCursor = 0;
-  self.posOfPrevious = [ 0,0 ];
+  self.posOfPrevious = [ 0, 0 ];
 
 }
 
@@ -237,7 +238,7 @@ function _lineEnded( line )
   var result = self.eventHandleSingle
   ({
     kind : 'line',
-    line : line,
+    line,
   });
 
   return result;
@@ -266,7 +267,7 @@ function _lineEntered()
   var result = self._lineEnd();
 
   if( _.consequenceIs( result ) )
-  result.finally( _.routineSeal( self,self._lineRefresh,[] ) );
+  result.finally( _.routineSeal( self, self._lineRefresh, [] ) );
   else
   self._lineRefresh();
 
@@ -446,7 +447,7 @@ var Composes =
 var Associates =
 {
 
-  history : _.define.own( [ 'aaa','bbb','ccc','dd\neeee','d\nee\nfff' ] ),
+  history : _.define.own( [ 'aaa', 'bbb', 'ccc', 'dd\neeee', 'd\nee\nfff' ] ),
   historyIndex : -1,
   historyLimit : 128,
   usingHistoryFile : 1,
@@ -490,57 +491,57 @@ var Events =
 const Proto =
 {
 
-  init : init,
+  init,
 
 
   // inter
 
-  prompt : prompt,
-  question : question,
+  prompt,
+  question,
 
-  close : close,
-  pause : pause,
-  resume : resume,
-  clear : clear,
+  close,
+  pause,
+  resume,
+  clear,
 
 
   // etc
 
-  handleStreamData : handleStreamData,
-  _writtenStream : _writtenStream,
+  handleStreamData,
+  _writtenStream,
 
 
   // line
 
-  _lineBegin : _lineBegin,
-  _lineEnd : _lineEnd,
-  _lineEnded : _lineEnded,
-  _lineEntered : _lineEntered,
-  _lineRefresh : _lineRefresh,
+  _lineBegin,
+  _lineEnd,
+  _lineEnded,
+  _lineEntered,
+  _lineRefresh,
 
-  lineCursorOffset : lineCursorOffset,
-  _lineInsertString : _lineInsertString,
+  lineCursorOffset,
+  _lineInsertString,
 
 
   // history
 
-  _historyPrependByCurrent : _historyPrependByCurrent,
-  _historyNext : _historyNext,
-  _historyPrev : _historyPrev,
+  _historyPrependByCurrent,
+  _historyNext,
+  _historyPrev,
 
-  _historyCanged : _historyCanged,
-  _historyEvalPath : _historyEvalPath,
-  _historySave : _historySave,
-  _historyLoad : _historyLoad,
+  _historyCanged,
+  _historyEvalPath,
+  _historySave,
+  _historyLoad,
 
 
   // relations
 
 
-  Composes : Composes,
-  Associates : Associates,
-  Restricts : Restricts,
-  Events : Events,
+  Composes,
+  Associates,
+  Restricts,
+  Events,
 
 }
 

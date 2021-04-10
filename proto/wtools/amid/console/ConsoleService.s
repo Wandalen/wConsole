@@ -1,4 +1,5 @@
- ( function _ConsoleService_s_() {
+( function _ConsoleService_s_()
+{
 
 'use strict';
 
@@ -26,7 +27,7 @@ if( typeof module !== 'undefined' )
 
 /** example :
 
-  function handleLine( err,code )
+  function handleLine( err, code )
   {
     eval( code );
   }
@@ -74,7 +75,7 @@ function init( o )
   });
 
   /*self.vocabulary.phrasesAdd( [] );*/
-  self.vocabulary.registerActions( self.DefaultPhrases,{ context : self } );
+  self.vocabulary.registerActions( self.DefaultPhrases, { context : self } );
 
 }
 
@@ -88,7 +89,7 @@ function listen( consequence )
 
   return self._listen
   ({
-    consequence : consequence,
+    consequence,
     once : 0,
   });
 
@@ -102,7 +103,7 @@ function listenLine( consequence )
 
   return self._listen
   ({
-    consequence : consequence,
+    consequence,
     once : 1,
   });
 
@@ -119,9 +120,9 @@ function _listen( o )
   self._launch();
 
   if( o.once )
-  self.eclipse( 'line',consequence );
+  self.eclipse( 'line', consequence );
   else
-  self.on( 'line',consequence );
+  self.on( 'line', consequence );
 
   return consequence;
 }
@@ -152,25 +153,25 @@ function _launch()
       //isTerminal : false,
     });
 
-/*
-    var Readline = require( 'repl' );
-    self._terimnal = Readline.start
-    ({
-      input : process.stdin,
-      output : process.stdout,
-      ignoreUndefined : true,
-      eval : function( cmd, context, filename, callback ){ if( 0 ) callback( null, undefined ); },
-    });
-*/
+    /*
+        var Readline = require( 'repl' );
+        self._terimnal = Readline.start
+        ({
+          input : process.stdin,
+          output : process.stdout,
+          ignoreUndefined : true,
+          eval : function( cmd, context, filename, callback ){ if( 0 ) callback( null, undefined ); },
+        });
+    */
 
-/*
-    var Readline = require( 'readline' );
-    self._terimnal = Readline.createInterface
-    ({
-      input : process.stdin,
-      output : process.stdout,
-    });
-*/
+    /*
+        var Readline = require( 'readline' );
+        self._terimnal = Readline.createInterface
+        ({
+          input : process.stdin,
+          output : process.stdout,
+        });
+    */
 
   }
 
@@ -190,7 +191,7 @@ function _launch()
   _.assert( _.consequenceIs( self._con ) );
 
   if( initing )
-  self._terimnal.on( 'line', _.routineJoin( self,self._handleLine ) );
+  self._terimnal.on( 'line', _.routineJoin( self, self._handleLine ) );
 
   self._terimnal.question( q );
 
@@ -229,7 +230,7 @@ function _handleLine( str )
   self._con.finally( function()
   {
 
-    // logger.log( '_handleLine( after self._con )', _.ct.bg( line,'red' ), self._con.resourcesGet().length );
+    // logger.log( '_handleLine( after self._con )', _.ct.bg( line, 'red' ), self._con.resourcesGet().length );
 
     /* try to exit */
 
@@ -243,14 +244,14 @@ function _handleLine( str )
 
     /* execute builtin command */
 
-  /*
-    if( str )
-    {
-      result = self.consoleCommandExecute( str )
-      if( result )
-      str = '';
-    }
-  */
+    /*
+      if( str )
+      {
+        result = self.consoleCommandExecute( str )
+        if( result )
+        str = '';
+      }
+    */
 
     if( str )
     {
@@ -261,7 +262,7 @@ function _handleLine( str )
 
     if( str[ 0 ] === '.' )
     {
-      logger.error( 'command not known :',str );
+      logger.error( 'command not known :', str );
       return null;
     }
 
@@ -271,7 +272,7 @@ function _handleLine( str )
 
     // logger.log( '_handleLine( result ) :' , result.resourcesGet().length );
 
-    result.finally( function( err,data )
+    result.finally( function( err, data )
     {
 
       try
@@ -328,7 +329,7 @@ function _handleLineAct( line )
   {
     kind : 'line',
     raw : line,
-    embraced : embraced,
+    embraced,
   }
 
   return self.eventGive( e );
@@ -352,9 +353,9 @@ function _listenStdin()
 
   }
 
-  if( self.stdin._handleListen ) self.stdin.removeListener( 'data',self.stdin._handleListen );
+  if( self.stdin._handleListen ) self.stdin.removeListener( 'data', self.stdin._handleListen );
   self.stdin._handleListen = handleData;
-  self.stdin.addListener( 'data',self.stdin._handleListen );
+  self.stdin.addListener( 'data', self.stdin._handleListen );
 
   console.log();
   console.log( 'Hello. Please enter command. Use help() to get help.' );
@@ -390,7 +391,7 @@ function writePhrase( src )
   if( !src )
   return;
 
-  src = _.strSplitNonPreserving({ src : src, delimeter : [ ';' ] });
+  src = _.strSplitNonPreserving({ src, delimeter : [ ';' ] });
 
   self.write( src.join( '\n' ) + '\n' );
 
@@ -498,7 +499,7 @@ function vocabularyPhraseExecute( code )
 
   // debugger;
   code = code.substr( 1 );
-  var parts = _.strIsolateLeftOrNone({ src : code, delimeter : [ ' ','(',')' ] });
+  var parts = _.strIsolateLeftOrNone({ src : code, delimeter : [ ' ', '(', ')' ] });
   // debugger;
 
   // console.log( '\nparts',parts );
@@ -513,7 +514,7 @@ function vocabularyPhraseExecute( code )
   if( parts[ 2 ] !== code )
   {
     args = parts[ 2 ] || args;
-    args = _.strStrip({ src : args, stripper : [ ' ','(',')' ] });
+    args = _.strStrip({ src : args, stripper : [ ' ', '(', ')' ] });
   }
 
   // var argv = [];
@@ -531,15 +532,15 @@ function vocabularyPhraseExecute( code )
       }
       else
       {
-        var str =  _.strStrip({ src : elem, stripper : [ '[',']' ]});
-        var strSplitted = _.strSplitNonPreserving({ src : str, delimeter : ',' });
+        var str =  _.strStrip({ src : elem, stripper : [ '[', ']' ] });
+        var strSplitted = _.strSplitNonPreserving({ src : str, delimeter : ', ' });
         if( strSplitted.length > 1 )
         argsParsed.map[ k ] = strSplitted.map( ( e ) => _.numberFrom( e ) );
       }
     }
   }
 
-  //logger.log( 'args :',args );
+  //logger.log( 'args :', args );
 
   /**/
 
@@ -554,14 +555,14 @@ function vocabularyPhraseExecute( code )
     {
       var loggerLevel = logger.level;
 
-      result = vocabulary.handleActivate( a.action,args, argsParsed.map );
+      result = vocabulary.handleActivate( a.action, args, argsParsed.map );
 
       if( !_.consequenceIs( result ) )
       {
         result = true;
         logger.level = loggerLevel;
       }
-      else result.tap( function( err,data )
+      else result.tap( function( err, data )
       {
         logger.level = loggerLevel;
       });
@@ -586,16 +587,16 @@ function vocabularyPhraseExecute( code )
 
     self.helpFor( splitted.join( ' ' ) );
 
-/*
-    a = vocabulary.actionsForSubject( splitted );
+    /*
+        a = vocabulary.actionsForSubject( splitted );
 
-    if( !a.length )
-    return false;
+        if( !a.length )
+        return false;
 
-    logger.log( 'Phrases :' );
-    logger.log( '' );
-    self.log( _.select( a,'*.descriptor.phrase' ) );
-*/
+        logger.log( 'Phrases :' );
+        logger.log( '' );
+        self.log( _.select( a, '*.descriptor.phrase' ) );
+    */
 
   }
 
@@ -669,59 +670,59 @@ function commandHelp()
   var self = this;
   var context = self.context;
 
-/*
-  logger.logUp( 'Commands :\n' );
+  /*
+    logger.logUp( 'Commands :\n' );
 
-  for( var c in self.commands )
-  {
-    var command = self.commands[ c ];
-    var h = command.help ? command.help : '';
-    var str = '.' + c + ' - ' + h;
-    logger.log( str )
-  }
+    for( var c in self.commands )
+    {
+      var command = self.commands[ c ];
+      var h = command.help ? command.help : '';
+      var str = '.' + c + ' - ' + h;
+      logger.log( str )
+    }
 
-  logger.logDown( '' );
-*/
+    logger.logDown( '' );
+  */
 
   /**/
 
   var vocabulary = self.vocabulary;
   if( vocabulary )
   {
-/*
-    logger.logUp( 'Phrases :' );
-    logger.log( '' );
+  /*
+      logger.logUp( 'Phrases :' );
+      logger.log( '' );
 
     //logger.log( 'vocabulary :\n' + _.entity.exportString( vocabulary.vocabulary,{ levels : 2 } ) );
 
-    var phrases1 = vocabulary.phrasesGet({ wordDelimeter : '.' });
-    var phrases2 = vocabulary.phrasesGet();
-    var hint = _.select( vocabulary.vocabulary.descriptorArray,'*.hint' );
+      var phrases1 = vocabulary.phrasesGet({ wordDelimeter : '.' });
+      var phrases2 = vocabulary.phrasesGet();
+      var hint = _.select( vocabulary.vocabulary.descriptorArray, '*.hint' );
 
-    for( var i = 0 ; i < hint.length ; i++ )
-    if( !hint[ i ] )
-    hint[ i ] = phrases2[ i ];
+      for( var i = 0 ; i < hint.length ; i++ )
+      if( !hint[ i ] )
+      hint[ i ] = phrases2[ i ];
 
-    var phrases = _.strJoin( '.',phrases1,' - ',hint );
-    self.log( phrases );
-    logger.logDown( '' );
+      var phrases = _.strJoin( '.',phrases1, ' - ',hint );
+      self.log( phrases );
+      logger.logDown( '' );
 
-    logger.log( 'clauseForSubjectMap :' );
-    logger.log( '' );
-    self.log( Object.keys( vocabulary.vocabulary.clauseForSubjectMap ) );
-    logger.log( '' );
-*/
+      logger.log( 'clauseForSubjectMap :' );
+      logger.log( '' );
+      self.log( Object.keys( vocabulary.vocabulary.clauseForSubjectMap ) );
+      logger.log( '' );
+  */
 
     self.helpFor( '' );
 
-/*
-    debugger;
-    var a = vocabulary.actionsForSubject( '' );
-    logger.log( 'Phrases :' );
-    logger.log( '' );
-    self.log( _.select( a,'*.descriptor.phrase' ) );
-    logger.log( '' );
-*/
+    /*
+        debugger;
+        var a = vocabulary.actionsForSubject( '' );
+        logger.log( 'Phrases :' );
+        logger.log( '' );
+        self.log( _.select( a, '*.descriptor.phrase' ) );
+        logger.log( '' );
+    */
 
   }
 
@@ -912,52 +913,52 @@ var Events =
 const Proto =
 {
 
-  init : init,
+  init,
 
 
   // listen
 
-  listen : listen,
-  listenLine : listenLine,
+  listen,
+  listenLine,
 
-  _listen : _listen,
-  _listenStdin : _listenStdin,
+  _listen,
+  _listenStdin,
 
-  _launch : _launch,
+  _launch,
 
-  _handleLine : _handleLine,
-  _handleLineAct : _handleLineAct,
+  _handleLine,
+  _handleLineAct,
 
-  write : write,
-  writePhrase : writePhrase,
+  write,
+  writePhrase,
 
 
   // code
 
-  codeEmbrace : codeEmbrace,
-  codeToInject : codeToInject,
+  codeEmbrace,
+  codeToInject,
 
 
   // etc
 
-  registerBrowser : registerBrowser,
+  registerBrowser,
   /*consoleCommandExecute : consoleCommandExecute,*/
-  vocabularyPhraseExecute : vocabularyPhraseExecute,
-  log : log,
-  helpFor : helpFor,
+  vocabularyPhraseExecute,
+  log,
+  helpFor,
 
 
   // relations
 
-  DefaultCommands : DefaultCommands,
-  DefaultPhrases : DefaultPhrases,
+  DefaultCommands,
+  DefaultPhrases,
 
 
-  Composes : Composes,
-  Aggregates : Aggregates,
-  Associates : Associates,
-  Restricts : Restricts,
-  Events : Events,
+  Composes,
+  Aggregates,
+  Associates,
+  Restricts,
+  Events,
 
 }
 
